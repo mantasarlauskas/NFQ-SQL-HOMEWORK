@@ -1,0 +1,5 @@
+1.
+SELECT name, count(bookId) as kiekis FROM Authors LEFT JOIN Books ON Authors.authorId = Books.authorId GROUP BY Authors.authorId;
+SELECT name, count(bookId) as kiekis FROM Authors INNER JOIN Books ON Authors.authorId = Books.authorId GROUP BY Authors.authorId;
+2.
+DELETE Authors FROM Authors LEFT JOIN Books on Authors.authorId = Books.authorId WHERE bookId IS NULL;
