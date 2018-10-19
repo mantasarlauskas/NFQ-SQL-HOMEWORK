@@ -1,17 +1,13 @@
-1. 
+ALTER TABLE Books MODIFY title varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;
+ALTER TABLE `Books` DROP COLUMN `authorId`;
+DELETE FROM `Books`;
+DELETE FROM `Authors`;
 CREATE TABLE `Authors_Books` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `authorId` int(11) DEFAULT NULL,
   `bookId` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=9;
-
-ALTER TABLE `Books` DROP COLUMN `authorId`;
-
-2.
-DELETE FROM `Books`;
-DELETE FROM `Authors`;
-
 INSERT INTO `Authors` (`authorId`, `name`) VALUES
 (1, 'Chris Smith'),
 (2, 'Steven Levithan'),
@@ -20,7 +16,6 @@ INSERT INTO `Authors` (`authorId`, `name`) VALUES
 (5, ' Al Anderson'),
 (6, 'Clay Breshears'),
 (7, 'Kevlin Henney');
-
 INSERT INTO `Books` (`bookId`, `title`, `year`) VALUES
 (1, 'Programming F# 3.0, 2nd Edition', 2012),
 (2, 'Regular Expressions Cookbook, 2nd Edition', 2012),
@@ -30,8 +25,6 @@ INSERT INTO `Books` (`bookId`, `title`, `year`) VALUES
 (6, 'McCullough and Berglund on Mastering Advanced Git', NULL),
 (7, 'Version Control with Git, 2nd Edition', 2012),
 (8, 'Learning Python, 4th Edition', 2009);
-
-
 INSERT INTO `Authors_Books` (`id`, `bookId`, `authorId`) VALUES
 (1, 1, 1),
 (2, 2, 2),
@@ -41,11 +34,3 @@ INSERT INTO `Authors_Books` (`id`, `bookId`, `authorId`) VALUES
 (6, 6, NULL),
 (7, 7, NULL),
 (8, 8, NULL);
-
-3.
-SELECT title, GROUP_CONCAT(name) FROM Books 
-LEFT JOIN Authors_Books ON Books.bookId = Authors_Books.bookId
-LEFT JOIN Authors ON Authors_Books.authorId = Authors.authorId
-GROUP BY Books.bookId;
-
-4. ALTER TABLE Books MODIFY title varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;

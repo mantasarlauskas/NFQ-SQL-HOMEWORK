@@ -1,0 +1,1 @@
+1. SELECT News.newsId as newsId, News.date as newsDate, News.text as newsText, max(Comments.date) as commentDate FROM News LEFT JOIN Comments ON News.newsId = Comments.newsId GROUP BY News.newsId ORDER BY News.date DESC LIMIT 10;
