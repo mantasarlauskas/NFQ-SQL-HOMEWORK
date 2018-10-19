@@ -1,9 +1,9 @@
 1.
-INSERT INTO Authors(name) VALUES('Vardas Pavarde');
-INSERT INTO Authors(name) VALUES('Jonas Jonaitis');
+INSERT INTO Authors(name) VALUES('Vardas Pavarde'), ('Jonas Jonaitis');
 2.
-INSERT INTO Books(authorId, title, year) VALUES(8, 'Knyga1', 2005);
-INSERT INTO Books(authorId, title, year) VALUES(9, 'Knyga2', 2007);
-INSERT INTO Books(authorId, title, year) VALUES(9, 'Knyga3', 2006);
+INSERT INTO Books(authorId, title, year) VALUES
+(8, 'Knyga1', 2005),
+(9, 'Knyga2', 2007),
+(9, 'Knyga3', 2006);
 3.
 UPDATE Books SET authorId = 8 WHERE bookId = 11;
